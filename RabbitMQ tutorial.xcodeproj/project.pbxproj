@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		102824774C3A886EE553E55B /* Pods_RabbitMQ_tutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371676BE753BBFFBDFC5D9E3 /* Pods_RabbitMQ_tutorial.framework */; };
 		10C3C2C424D3057C00B691C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C3C2C324D3057C00B691C7 /* AppDelegate.swift */; };
 		10C3C2C624D3057C00B691C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C3C2C524D3057C00B691C7 /* SceneDelegate.swift */; };
 		10C3C2C824D3057C00B691C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C3C2C724D3057C00B691C7 /* ViewController.swift */; };
@@ -24,6 +25,9 @@
 		10C3C2CC24D3059800B691C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10C3C2CF24D3059800B691C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10C3C2D124D3059800B691C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CE4AC853DA358C672580573 /* Pods-RabbitMQ tutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RabbitMQ tutorial.release.xcconfig"; path = "Target Support Files/Pods-RabbitMQ tutorial/Pods-RabbitMQ tutorial.release.xcconfig"; sourceTree = "<group>"; };
+		371676BE753BBFFBDFC5D9E3 /* Pods_RabbitMQ_tutorial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RabbitMQ_tutorial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75F674BAD25611902C346B9C /* Pods-RabbitMQ tutorial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RabbitMQ tutorial.debug.xcconfig"; path = "Target Support Files/Pods-RabbitMQ tutorial/Pods-RabbitMQ tutorial.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				102824774C3A886EE553E55B /* Pods_RabbitMQ_tutorial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				10C3C2C224D3057C00B691C7 /* RabbitMQ tutorial */,
 				10C3C2C124D3057C00B691C7 /* Products */,
+				727B9B18D5392AE3D91F2111 /* Pods */,
+				79C6679B6F4D48DF3C2FA24D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,24 @@
 			path = "RabbitMQ tutorial";
 			sourceTree = "<group>";
 		};
+		727B9B18D5392AE3D91F2111 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				75F674BAD25611902C346B9C /* Pods-RabbitMQ tutorial.debug.xcconfig */,
+				2CE4AC853DA358C672580573 /* Pods-RabbitMQ tutorial.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		79C6679B6F4D48DF3C2FA24D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				371676BE753BBFFBDFC5D9E3 /* Pods_RabbitMQ_tutorial.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 10C3C2D424D3059800B691C7 /* Build configuration list for PBXNativeTarget "RabbitMQ tutorial" */;
 			buildPhases = (
+				56AEED235EA22650BD40B9F2 /* [CP] Check Pods Manifest.lock */,
 				10C3C2BC24D3057C00B691C7 /* Sources */,
 				10C3C2BD24D3057C00B691C7 /* Frameworks */,
 				10C3C2BE24D3057C00B691C7 /* Resources */,
+				84F7652930B33AE2A5E4EA9B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		56AEED235EA22650BD40B9F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RabbitMQ tutorial-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84F7652930B33AE2A5E4EA9B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RabbitMQ tutorial/Pods-RabbitMQ tutorial-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RabbitMQ tutorial/Pods-RabbitMQ tutorial-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RabbitMQ tutorial/Pods-RabbitMQ tutorial-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		10C3C2BC24D3057C00B691C7 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		10C3C2D524D3059800B691C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75F674BAD25611902C346B9C /* Pods-RabbitMQ tutorial.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +370,7 @@
 		};
 		10C3C2D624D3059800B691C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CE4AC853DA358C672580573 /* Pods-RabbitMQ tutorial.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
