@@ -54,7 +54,8 @@ class ViewController: UIViewController {
         let channel = connection.createChannel()
         let q = channel.queue("task_queue", options: .durable)
         let msgData = msg.data(using: .utf8)
-        channel.defaultExchange().publish(msgData!, routingKey: q.name, persistent: true)
+        let exchange = channel.fanout("logs")
+        exchange.publish(msgData!, routingKey: q.name, persistent: true)
         connection.close()
     }
     
@@ -63,8 +64,10 @@ class ViewController: UIViewController {
         let connection = RMQConnection(delegate: RMQConnectionDelegateLogger())
         connection.start()
         let channel = connection.createChannel()
+        let exchange = channel.fanout("logs")
         channel.basicQos(1, global: false)
-        let q = channel.queue("task_queue", options: .durable)
+        let q = channel.queue("", options: .exclusive)
+        q.bind(exchange)
         print("Waiting for messages...")
         
         let manualAck = RMQBasicConsumeOptions()
