@@ -34,28 +34,47 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.newTask("Some work...")
+        self.workerNamed("Larry")
+        self.workerNamed("Curly")
+        self.workerNamed("Moe")
+        self.newTask("One dot.")
+        self.newTask("No dots")
+        self.newTask("Two.Dots.")
+        self.newTask("Three dots...")
+        self.newTask("Four.dots....")
+        print("WORK COMPLETED")
     }
     
-    func send() {
+    func newTask(_ msg: String) {
         print("Attempting to connect to local RabbitMQ broker")
         let connection = RMQConnection(delegate: RMQConnectionDelegateLogger())
         connection.start()
         
         let channel = connection.createChannel()
-        let q = channel.queue("hello")
-        channel.defaultExchange().publish("Hello World!".data(using: .utf8)!, routingKey: q.name)
+        let q = channel.queue("task_queue", options: .durable)
+        let msgData = msg.data(using: .utf8)
+        channel.defaultExchange().publish(msgData!, routingKey: q.name, persistent: true)
         connection.close()
     }
     
-    func receive() {
+    func workerNamed(_ name: String) {
         print("Attempting to connect to local RabbitMQ broker")
         let connection = RMQConnection(delegate: RMQConnectionDelegateLogger())
         connection.start()
         let channel = connection.createChannel()
-        let q = channel.queue("hello")
+        channel.basicQos(1, global: false)
+        let q = channel.queue("task_queue", options: .durable)
         print("Waiting for messages...")
-        q.subscribe({ (_ message: RMQMessage) -> Void in
-            print("Received \(String(describing: String(data: message.body, encoding: .utf8)))")
+        
+        let manualAck = RMQBasicConsumeOptions()
+        q.subscribe(manualAck, handler: { (_ message: RMQMessage) -> Void in
+            let messageText = String(data: message.body, encoding: .utf8)
+            print("[\(name)] Received message: \(String(describing: messageText))")
+            let sleepTime = messageText?.components(separatedBy: ".").count ?? 0 - 1
+            print("[\(name)] Sleeping for \(sleepTime) seconds")
+            sleep(UInt32(sleepTime))
+            channel.ack(message.deliveryTag)
         })
     }
 
